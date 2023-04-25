@@ -6,6 +6,8 @@ Instalar todas as dependencias indicadas pelo package.json
 
 Criar a base de dados no MySQL
 
+Copiar e colocar o ".env-example" para ".env"
+
 Alterar as credenciais do banco de dados no arquivo ".env"
 
 Executar as migrations
