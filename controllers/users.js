@@ -81,10 +81,6 @@ router.get("/users/:id", async (req, res) => {
       mensagem: "Error: Nenhum usuário encontrado.",
     });
   }
-
-  return res.status(400).json({
-    mensagem: "Error: Nenhum usuário encontrado.",
-  });
 });
 
 // Criar a rota cadastrar
@@ -125,6 +121,27 @@ router.put("/users", async (req, res) => {
         mensagem: "Erro: Usuário não editado com sucesso!",
       });
     });
+});
+
+// Criar a rota apagar
+router.delete("/users/:id", async (req, res) => {
+    const { id } = req.params;
+    
+    await db.Users.destroy({
+        where: {
+            id
+        }
+    }).then(() => {
+        return res.json({
+            mensagem: "Usuário apagado com sucesso!",
+        });
+    }).catch(() => {
+        return res.status(400).json({
+            mensagem: "Erro: Usuário não apagado com sucesso!",
+        });
+    });
+
+
 });
 
 module.exports = router;
