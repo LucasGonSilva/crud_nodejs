@@ -74,7 +74,7 @@ router.get("/users/:id", async (req, res) => {
 
   if (user) {
     return res.json({
-        user: user.dataValues
+      user: user.dataValues,
     });
   } else {
     return res.status(400).json({
@@ -87,7 +87,7 @@ router.get("/users/:id", async (req, res) => {
   });
 });
 
-// Criar a rotar cadastrar
+// Criar a rota cadastrar
 router.post("/users", async (req, res) => {
   var dados = req.body;
 
@@ -101,6 +101,28 @@ router.post("/users", async (req, res) => {
     .catch(() => {
       return res.json({
         mensagem: "Error: Usuário não cadastrado com sucesso!",
+      });
+    });
+});
+
+// Criar a rota editar
+router.put("/users", async (req, res) => {
+  //Receber os dados enviados no corpo da requisição
+  var dados = req.body;
+  console.log(dados);
+  await db.Users.update(dados, {
+    where: {
+      id: dados.id,
+    },
+  })
+    .then(() => {
+        return res.json({
+            mensagem: "Usuário editado com sucesso!",
+          });
+    })
+    .catch(() => {
+      return res.status(400).json({
+        mensagem: "Erro: Usuário não editado com sucesso!",
       });
     });
 });
