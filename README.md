@@ -1,10 +1,32 @@
+Como rodar o projeto baixado
+
+Instalar todas as dependencias indicadas pelo package.json
+
+### npm install
+
+Criar a base de dados no MySQL
+
+Alterar as credenciais do banco de dados no arquivo ".env"
+
+Executar as migrations
+
+### npx sequelize-cli db:migrate
+
+Rodar o projeto
+
+### node app.js
+
+Rodar o projeto usando o nodemon
+
+### nodemon app.js
+
 Sequencia para criar o projeto
 
 Criar o arquivo package
 
 ### npm init
 
-Gerencia as requisi��es, rotas e URLs, entre outras funcionalidades.
+Gerencia as requisições, rotas e URLs, entre outras funcionalidades.
 
 ### npm install --save express
 
